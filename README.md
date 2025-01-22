@@ -168,6 +168,8 @@ Simply put, this downloads the file as a temp file, we load it in with `TextFile
 
 Why do we want to support streaming? What about streaming is important, or useful?
 
+> Answer: It's very important to support streaming!  Streaming allows us to serve multiple users at once, not lock up our app while it waits for a single component of our pipeline to run, and serve parts of our response without needing to wait for the entire text.
+
 ### On Chat Start:
 
 The next scope is where "the magic happens". On Chat Start is when a user begins a chat session. This will happen whenever a user opens a new chat window, or refreshes an existing chat window.
@@ -209,6 +211,8 @@ Now, we'll save that into our user session!
 #### ❓ QUESTION #2: 
 
 Why are we using User Session here? What about Python makes us need to use this? Why not just store everything in a global variable?
+
+> Answer: Using global variables wouldn't work, unless we wanted to bulid an application where all our users simultaneously see the same chat & use a common pool of documents, we need to store documents and chats sorted by users & track which logged in user is attached to each set of documents.
 
 ### On Message
 
@@ -334,6 +338,9 @@ Upload a PDF file of the recent DeepSeek-R1 paper and ask the following question
 3. What is this paper about?
 
 Does this application pass your vibe check? Are there any immediate pitfalls you're noticing?
+
+> Answer: It passes the vibe check, but doesn't know what "paper" we're talking about!  
+> Very interesting.  I wonder if there's a way to do Rag that would fix that?
 
 ## 🚧 CHALLENGE MODE 🚧
 
